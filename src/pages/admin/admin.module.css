@@ -1,0 +1,17 @@
+.page{padding:26px 30px;max-width:1200px;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.pageHead{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;gap:16px;flex-wrap:wrap}
+.pageTitle{font-size:22px;font-weight:700;color:var(--g900);letter-spacing:-.01em}
+.stats4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+@media(max-width:900px){.stats4{grid-template-columns:repeat(2,1fr)}}
+.section{margin-bottom:24px}
+.secTitle{font-size:14px;font-weight:600;color:var(--g600);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+
+/* Legacy modal support (some pages still use these) */
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(2px);z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;animation:fadeIn .2s ease}
+.modal{background:#fff;border-radius:14px;box-shadow:0 32px 80px rgba(0,0,0,.25);padding:28px;width:100%;max-width:520px;animation:slideUp .25s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.modalTitle{font-size:18px;font-weight:700;margin-bottom:18px}
+.modalFoot{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+.ferr{background:var(--bad-bg);color:var(--bad);padding:9px 12px;border-radius:6px;font-size:13px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
