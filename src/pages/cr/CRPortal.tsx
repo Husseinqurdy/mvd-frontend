@@ -29,7 +29,7 @@ export default function CRPortal() {
   const { data: statuses = [] } = useQuery<VenueStatus[]>({
     queryKey: ['statuses'],
     queryFn: () => api.get('/venues/status/').then(r => r.data),
-    refetchInterval: 60000,
+    refetchInterval: 15000,   // refresh available venues quickly after booking
   })
   const { data: venues = [] } = useQuery<Venue[]>({
     queryKey: ['venues'],
@@ -51,8 +51,11 @@ export default function CRPortal() {
   const submitMut = useMutation({
     mutationFn: (d: any) => api.post('/requests/', d).then(r => r.data),
     onSuccess: (data) => {
+      // Invalidate all relevant queries immediately so metrics update right away
       qc.invalidateQueries({ queryKey: ['my-requests'] })
       qc.invalidateQueries({ queryKey: ['statuses'] })
+      qc.invalidateQueries({ queryKey: ['today-sessions'] })
+      qc.invalidateQueries({ queryKey: ['pending-requests'] })
       setShowForm(false)
       setForm(blank)
       setErr('')

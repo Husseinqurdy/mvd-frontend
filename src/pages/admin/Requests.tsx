@@ -28,6 +28,8 @@ export default function RequestsAdmin() {
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ['requests'] })
       qc.invalidateQueries({ queryKey: ['pending-requests'] })
+      qc.invalidateQueries({ queryKey: ['statuses'] })      // update venue status cards
+      qc.invalidateQueries({ queryKey: ['today-sessions'] }) // update TV display data
       setReviewing(null); setNote(''); setErr('')
     },
     onError: (e: any) => setErr(e?.response?.data?.detail ?? 'Review failed.'),

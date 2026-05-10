@@ -7,11 +7,12 @@ export default function Overview() {
   const { data: statuses = [] } = useQuery<VenueStatus[]>({
     queryKey: ['statuses'],
     queryFn: () => api.get('/venues/status/').then(r => r.data),
-    refetchInterval: 30000,
+    refetchInterval: 30000,   // refresh every 30s to reflect new bookings
   })
   const { data: pending = [] } = useQuery<VenueRequest[]>({
     queryKey: ['pending-requests'],
     queryFn: () => api.get('/requests/?status=PENDING').then(r => r.data.results ?? r.data),
+    refetchInterval: 30000,
   })
 
   const occ   = statuses.filter(v => v.status === 'OCCUPIED').length
